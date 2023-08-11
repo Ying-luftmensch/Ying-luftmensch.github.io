@@ -137,6 +137,68 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2023/08/11/git-config/" >git 相关配置</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2023-08-11  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<h3 id="ssh-配置"><a href="#ssh-配置" class="headerlink" title="ssh 配置"></a>ssh 配置</h3><blockquote>
+<p>ssh 是一种加密协议，使用 ssh 连接远程仓库，可以实现免密登录<br>以下命令均在 git bash 中执行</p>
+</blockquote>
+<ol>
+<li>配置用户名和邮箱</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none"># 如果针对单个git仓库配置，可将 --global 改为 --local
+
+$ git config --global user.name &quot;用户名&quot;
+$ git config --global user.email &quot;邮箱&quot;
+
+# 检查配置
+
+$ git config user.name
+$ git config user.email<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>生成公钥和私钥</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">$ ssh-keygen -t rsa -C &quot;邮箱&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>几次回车后会在指定目录生成.ssh 文件夹(一般在 C 盘的用户文件夹下)，其中 <code>id_ras</code>为私钥文件，<code>id_rsa.pub</code>为公钥文件</p>
+<ol start="3">
+<li><p>在 github 配置公钥</p>
+<ol>
+<li>打开<code>id_rsa.pub</code>文件并复制内容</li>
+<li>进入 github 个人 settings，选择<code>SSH and GPG keys</code></li>
+<li>点击 <code>New SSH key</code>，将之前复制的公钥粘贴到 key 对应文本框(title 自己命名)</li>
+</ol>
+</li>
+<li><p>检查 ssh 配置</p>
+</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>输出结果如下为配置成功</p>
+	
+	</div>
+  <a type="button" href="/2023/08/11/git-config/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2023/08/10/hexo-test/" >基于hexo搭建博客记录</a>
 		</h3>
 		</div>
@@ -245,6 +307,8 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 		<h4>Categories</h4>
 		<ul class="tag_box inline list-unstyled">
 		
+			<li><a href="/categories/config/">config<span>2</span></a></li>
+		
 			<li><a href="/categories/test/">test<span>1</span></a></li>
 		
 		</ul>
@@ -258,6 +322,8 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 		
 			<li><a href="/tags/log/">log<span>1</span></a></li>
 		
+			<li><a href="/tags/git/">git<span>1</span></a></li>
+		
 			<li><a href="/tags/hello/">hello<span>1</span></a></li>
 		
 		 
@@ -270,6 +336,10 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2023/08/11/git-config/" ><i class="fa fa-file-o"></i>git 相关配置</a>
+      </li>
     
       <li>
         <a href="/2023/08/10/hexo-test/" ><i class="fa fa-file-o"></i>基于hexo搭建博客记录</a>
