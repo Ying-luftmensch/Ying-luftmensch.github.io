@@ -33,13 +33,9 @@ $ ssh-keygen -t rsa -C &amp;quot;邮箱&amp;quot;
 几次回车后会在指定目录生成.ssh 文件夹(一般在 C 盘的用户文件夹下)，其中 id_ras为私钥文件，id_rsa.pub为公钥文件
 
 在 github 配置公钥
+(1) 打开id_rsa.pub文件并复制内容(2) 进入 github 个人 settings，选择SSH and GPG keys(3) 点击 New SSH key，将之前复制的公钥粘贴到 key 对应文本框(title 自己命名)
 
-打开id_rsa.pub文件并复制内容
-进入 github 个人 settings，选择SSH and GPG keys
-点击 New SSH key，将之前复制的公钥粘贴到 key 对应文本框(title 自己命名)
-
-
-检查 ssh 配置
+回到 git bash 检查 ssh 配置
 
 
 $ ssh -T git@github.com
@@ -190,19 +186,15 @@ $ git config user.email<span aria-hidden="true" class="line-numbers-rows"><span>
 <p>几次回车后会在指定目录生成.ssh 文件夹(一般在 C 盘的用户文件夹下)，其中 <code>id_ras</code>为私钥文件，<code>id_rsa.pub</code>为公钥文件</p>
 <ol start="3">
 <li><p>在 github 配置公钥</p>
-<ol>
-<li>打开<code>id_rsa.pub</code>文件并复制内容</li>
-<li>进入 github 个人 settings，选择<code>SSH and GPG keys</code></li>
-<li>点击 <code>New SSH key</code>，将之前复制的公钥粘贴到 key 对应文本框(title 自己命名)</li>
-</ol>
+<p>(1) 打开<code>id_rsa.pub</code>文件并复制内容<br>(2) 进入 github 个人 settings，选择<code>SSH and GPG keys</code><br>(3) 点击 <code>New SSH key</code>，将之前复制的公钥粘贴到 key 对应文本框(title 自己命名)</p>
 </li>
-<li><p>检查 ssh 配置</p>
+<li><p>回到 git bash 检查 ssh 配置</p>
 </li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>输出结果如下为配置成功</p>
-<img src="/.io//08/11/git-config/git-ssh.png" class title="ssh-result">
+<img src="/2023/08/11/git-config/git.jpg" class title="img">
 
 	  <div class="article-footer-copyright">
 
