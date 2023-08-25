@@ -137,6 +137,53 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2023/08/25/vue-memory-problem/" >vue 运行/打包时报内存溢出问题记录</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2023-08-25  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<blockquote>
+<p>朋友运行 vue 项目时报 <code>JavaScript heap out of memory</code>，一通操作后 npm 执行任何命令都直接报错，尝试重装 node 后执行 npm 命令不再报错，但运行项目还是会报内存溢出，特在此记录问题解决过程</p>
+</blockquote>
+<ol>
+<li>安装 increase-memory-limit 和 cross-env</li>
+</ol>
+<ul>
+<li>increase-memory-limit 用于增加项目运行可用内存</li>
+<li>cross-env 可以统一不同平台上设置和使用环境变量的方式</li>
+</ul>
+<ol start="2">
+<li>在 package.json 的 scripts 选项中增加如下配置</li>
+</ol>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"fix-memory-limit"</span><span class="token operator">:</span> <span class="token string">"cross-env LIMIT=4096 increase-memory-limit"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>在终端运行 <code>npm run fix-memory-limit</code>，然后重新项目</li>
+<li>重启时可能会报如下错误<img src="/2023/08/25/vue-memory-problem/error.png" class title="err">
+可以尝试删除 package-lock 和 node_modules 文件，然后执行<code>npm cache clear --force</code>清缓存，<br>重新下载依赖后运行项目</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/2023/08/25/vue-memory-problem/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2023/08/15/browser-compatibility/" >浏览器兼容性问题</a>
 		</h3>
 		</div>
@@ -413,15 +460,15 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/hello/">hello<span>1</span></a></li>
+			<li><a href="/tags/log/">log<span>1</span></a></li>
+		
+			<li><a href="/tags/compatibility/">compatibility<span>2</span></a></li>
 		
 			<li><a href="/tags/css/">css<span>1</span></a></li>
 		
-			<li><a href="/tags/log/">log<span>1</span></a></li>
+			<li><a href="/tags/hello/">hello<span>1</span></a></li>
 		
 			<li><a href="/tags/git/">git<span>1</span></a></li>
-		
-			<li><a href="/tags/compatibility/">compatibility<span>2</span></a></li>
 		
 		 
 		</ul>
@@ -433,6 +480,10 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <div class="widget">
   <h4>Recent Posts</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2023/08/25/vue-memory-problem/" ><i class="fa fa-file-o"></i>vue 运行/打包时报内存溢出问题记录</a>
+      </li>
     
       <li>
         <a href="/2023/08/15/browser-compatibility/" ><i class="fa fa-file-o"></i>浏览器兼容性问题</a>
@@ -448,10 +499,6 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
     
       <li>
         <a href="/2023/08/11/git-config/" ><i class="fa fa-file-o"></i>git 相关配置</a>
-      </li>
-    
-      <li>
-        <a href="/2023/08/10/hexo-test/" ><i class="fa fa-file-o"></i>基于hexo搭建博客记录</a>
       </li>
     
   </ul>

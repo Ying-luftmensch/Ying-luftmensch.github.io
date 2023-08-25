@@ -6,13 +6,18 @@
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
   
-  <title>css | shadow&#39;s blog</title>
+  <title>vue 运行/打包时报内存溢出问题记录 | shadow&#39;s blog</title>
   <meta name="author" content="Ying">
+  
+  <meta name="description" content="朋友运行 vue 项目时报 JavaScript heap out of memory，一通操作后 npm 执行任何命令都直接报错，尝试重装 node 后执行 npm 命令不再报错，但运行项目还是会报内存溢出，特在此记录问题解决过程
+
+
+安装 increase-memory-limit 和 cros">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="vue 运行/打包时报内存溢出问题记录"/>
   <meta property="og:site_name" content="shadow&#39;s blog"/>
 
   
@@ -109,137 +114,131 @@
   	<div class="content">
     	 
 
-<!-- title -->
-<div class="page-header">
-  <h1 class="archive-title-category"><i class="fa fa-archive"></i> css</h1>
-</div>
 
-<div class="row page">
-  <!-- cols -->
-  
-  <div class="col-md-9">
 	
-
-	  <div id="top_search"></div>
-
-	  <div class="archive">
-		
-		
-		
-			
-			
-			<h4 class="archive-ul" data-toggle="collapse" data-target="#2023">2023<b class="caret"></b></h4>
-			<ul id="2023" class="collapse in">
-			
-		
-		<li class="listing-item">
-		<span class="date_class"> 2023-08-15 </span> &raquo;
-		
-		   <span class="title"><a href="/2023/08/15/css-make-img-equal-ratio/" >css-实现不同尺寸的图片固定比例显示</a></span>
-		
-		</li>			
-		
-		</ul>
+		<div class="page-header">
+			<h1> vue 运行/打包时报内存溢出问题记录</h1>
 		</div>
-
-</div> <!-- col-md-9/col-md-12 -->
-
-
-<div class="col-md-3">
-	<div id="sidebar">
 	
-			
-  <div id="site_search">
-   <div class="form-group">
-    <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
-   </div>  
-  <div id="local-search-result"></div>
-  </div>
 
 
-		
-			
-	<div class="widget">
-		<h4>Categories</h4>
-		<ul class="tag_box inline list-unstyled">
-		
-			<li><a href="/categories/broswer/">broswer<span>2</span></a></li>
-		
-			<li><a href="/categories/config/">config<span>2</span></a></li>
-		
-			<li><a href="/categories/css/">css<span>1</span></a></li>
-		
-			<li><a href="/categories/test/">test<span>1</span></a></li>
-		
-		</ul>
-	</div>
 
-		
-			
-	<div class="widget">
-		<h4>Tag Cloud</h4>
-		<ul class="tag_box inline list-unstyled">		
-		
-			<li><a href="/tags/git/">git<span>1</span></a></li>
-		
-			<li><a href="/tags/hello/">hello<span>1</span></a></li>
-		
-			<li><a href="/tags/log/">log<span>1</span></a></li>
-		
-			<li><a href="/tags/compatibility/">compatibility<span>2</span></a></li>
-		
-			<li><a href="/tags/css/">css<span>1</span></a></li>
-		
-		 
-		</ul>
-	</div>
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
 
+	<!-- content -->
+	<div class="mypage">		
+	  		
 
-		
-			
-<div class="widget">
-  <h4>Recent Posts</h4>
-  <ul class="entry list-unstyled">
-    
-      <li>
-        <a href="/2023/08/25/vue-memory-problem/" ><i class="fa fa-file-o"></i>vue 运行/打包时报内存溢出问题记录</a>
-      </li>
-    
-      <li>
-        <a href="/2023/08/15/browser-compatibility/" ><i class="fa fa-file-o"></i>浏览器兼容性问题</a>
-      </li>
-    
-      <li>
-        <a href="/2023/08/15/audio-error-in-chrome/" ><i class="fa fa-file-o"></i>在chrome中音视频自动播放报错问题</a>
-      </li>
-    
-      <li>
-        <a href="/2023/08/15/css-make-img-equal-ratio/" ><i class="fa fa-file-o"></i>css-实现不同尺寸的图片固定比例显示</a>
-      </li>
-    
-      <li>
-        <a href="/2023/08/11/git-config/" ><i class="fa fa-file-o"></i>git 相关配置</a>
-      </li>
-    
-  </ul>
+	  <blockquote>
+<p>朋友运行 vue 项目时报 <code>JavaScript heap out of memory</code>，一通操作后 npm 执行任何命令都直接报错，尝试重装 node 后执行 npm 命令不再报错，但运行项目还是会报内存溢出，特在此记录问题解决过程</p>
+</blockquote>
+<ol>
+<li>安装 increase-memory-limit 和 cross-env</li>
+</ol>
+<ul>
+<li>increase-memory-limit 用于增加项目运行可用内存</li>
+<li>cross-env 可以统一不同平台上设置和使用环境变量的方式</li>
+</ul>
+<ol start="2">
+<li>在 package.json 的 scripts 选项中增加如下配置</li>
+</ol>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"fix-memory-limit"</span><span class="token operator">:</span> <span class="token string">"cross-env LIMIT=4096 increase-memory-limit"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="3">
+<li>在终端运行 <code>npm run fix-memory-limit</code>，然后重新项目</li>
+<li>重启时可能会报如下错误<img src="/2023/08/25/vue-memory-problem/error.png" class title="err">
+可以尝试删除 package-lock 和 node_modules 文件，然后执行<code>npm cache clear --force</code>清缓存，<br>重新下载依赖后运行项目</li>
+</ol>
+
+	  <div class="article-footer-copyright">
+
+    本博客采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议(CC BY-NC-SA 4.0) 发布.</a>
 </div>
 
-		
-			
-<div class="widget">
-	<h4>Links</h4>
-	<ul class="blogroll list-unstyled">
+	</div>
+
 	
-		<li><i class="false"></i><a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" title="" target="_blank"]);">hexo-theme-bithack</a></li>
 	
-	</ul>
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2023/08/15/browser-compatibility/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
 </div>
 
 
-		
-	</div> <!-- sidebar -->
-</div> <!-- col-md-3 -->
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
 
+    
+</section>
+
+-->
+	
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2023-08-25 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
 
 
 
