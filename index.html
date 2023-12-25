@@ -151,10 +151,25 @@
   <div class="row">
 	
 	
-		<h2 id="性能测试工具"><a href="#性能测试工具" class="headerlink" title="性能测试工具"></a>性能测试工具</h2><ol>
-<li>Lighthouse<br>此处以 chrome 自带的 Lighthouse 为例<img src="/2023/09/05/front-performance/lighthouse.png" class title="lighthouse">
-测试结果<img src="/2023/09/05/front-performance/result.png" class title="测试结果"></li>
-</ol>
+		<h2 id="性能测试工具"><a href="#性能测试工具" class="headerlink" title="性能测试工具"></a>性能测试工具</h2><h3 id="Lighthouse"><a href="#Lighthouse" class="headerlink" title="Lighthouse"></a>Lighthouse</h3><p>此处以 chrome 自带的 Lighthouse 为例，当前使用 chrome 版本为 <code>116.0.5845.188</code><br>(最新版 chrome 已将 lighthouse 集成在 DevTools 中)</p>
+<img src="/2023/09/05/front-performance/lighthouse.png" class title="lighthouse">
+<p>测试结果，通过检测结果页右上角菜单选项，可下载测试结果报告</p>
+<img src="/2023/09/05/front-performance/result1.png" class title="测试结果">
+<p>接下来根据测试报告，逐条分析测试项</p>
+<p>1.Performance(性能)<br>性能测试结果分为 Metric、Opportunities 和 Diagnostics 三个部分，从对 Performance 的说明中可以看到只有 Metric 对性能测试评分有直接影响。</p>
+<ul>
+<li>metric(指标项)<img src="/2023/09/05/front-performance/metrics.png" class title="指标项">
+<ul>
+<li><code>First Contentful Paint</code> 首次内容绘制。浏览器首次将任意内容绘制到页面上的时间。</li>
+<li><code>Speed Index</code> 速度指标。首屏展示速度。</li>
+<li><code>Largest Contentful Paint</code> 最大内容绘制。浏览器将最大内容绘制到页面上的时间。</li>
+<li><code>Total Blocking Time</code> 总阻塞时间。FCP(首次内容绘制时间) 到 TTI(能够响应用户交互的时间点) 之间，主线程被超过 50ms 的任务阻塞的时间总和</li>
+<li><code>Cumulative Layout Shift</code> 累计布局偏移值</li>
+</ul>
+</li>
+<li>Opportunities<br>提供页面优化建议<img src="/2023/09/05/front-performance/opportunities.png" class title="优化机会">
+可以看到，本次测试给出的优化建议是去掉阻塞渲染的资源、启用文本压缩</li>
+</ul>
 
 	
 	</div>
@@ -491,15 +506,15 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 		<h4>Tag Cloud</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/hello/">hello<span>1</span></a></li>
+			<li><a href="/tags/css/">css<span>1</span></a></li>
+		
+			<li><a href="/tags/git/">git<span>1</span></a></li>
 		
 			<li><a href="/tags/compatibility/">compatibility<span>2</span></a></li>
 		
-			<li><a href="/tags/css/">css<span>1</span></a></li>
+			<li><a href="/tags/hello/">hello<span>1</span></a></li>
 		
 			<li><a href="/tags/log/">log<span>1</span></a></li>
-		
-			<li><a href="/tags/git/">git<span>1</span></a></li>
 		
 		 
 		</ul>
