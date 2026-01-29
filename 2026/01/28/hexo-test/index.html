@@ -1,0 +1,465 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>基于hexo搭建博客记录 | shadow&#39;s blog</title>
+  <meta name="author" content="Ying">
+  
+  <meta name="description" content="第一次用 hexo，在此记录搭建过程中有用的 tips 和踩的坑主题：freemind.bithack
+
+
+
+常用命令新建文章
+# layout
+#   post source&amp;#x2F;_posts
+#   page source
+#   draft source&amp;#x2F;_drafts
+$ hexo new [layout] &amp;lt;title&amp;gt;
+
+将草稿类型的文件移到 source&amp;#x2F;_posts
+$ hexo publish [layout] &amp;lt;title&amp;gt;
+
+生成静态文件
+$ hexo generate
+&amp;#x2F;&amp;#x2F; 简写
+$ hexo g
+
+启动服务器"> 
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="基于hexo搭建博客记录"/>
+  <meta property="og:site_name" content="shadow&#39;s blog"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+    <link rel="alternative" href="/atom.xml" title="shadow&#39;s blog" type="application/atom+xml">
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/prism.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-70812759-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-70812759-1');
+</script>
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+ <body>  
+  <!-- 文字点击特效（无jQuery） -->
+  <script>
+  (function() {
+      'use strict';
+      
+      // var texts = [
+      //     "❤", "✨", "💜", "🎉", "⭐", 
+      //     "👍", "🔥", "💖", "😊", "🎈",
+      //     "⭐", "💝", "☀️", "🌈", "🎊"
+      // ];
+      
+      // var colors = [
+      //     "#fff100", "#4ECDC4", "#FFD166", "#0e8e13",
+      //     "#118AB2", "#EF476F", "#FF9F43", "#5F27CD",
+      //     "#39ca8c", "#FF9FF3", "#F368E0", "#48DBFB"
+      // ];
+      // 生成随机颜色
+      function getRandomHexColor() {
+        return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
+      }
+            // 创建文字元素
+      function createTextEffect(x, y) {
+          // var text = texts[Math.floor(Math.random() * texts.length)];
+          // var color = colors[Math.floor(Math.random() * colors.length)];
+          
+          var span = document.createElement('span');
+          span.textContent = '✦'
+          span.style.cssText = `
+              position: fixed;
+              left: ${x}px;
+              top: ${y}px;
+              color: ${getRandomHexColor()};
+              font-size: 0.8em;
+              pointer-events: none;
+              z-index: 999999;
+              user-select: none;
+              opacity: 1;
+              transform: translate(0, 0);
+              transition: all 1.5s ease-out;
+              text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+          `;
+          
+          document.body.appendChild(span);
+          
+          // 触发动画
+          requestAnimationFrame(function() {
+              span.style.opacity = '0';
+              span.style.transform = `translate(${Math.random() * 40 - 20}px, -100px) scale(${1.5 + Math.random() * 0.5})`;
+          });
+          
+          // 移除元素
+          setTimeout(function() {
+              if (span.parentNode) {
+                  span.parentNode.removeChild(span);
+              }
+          }, 1500);
+      }
+      
+      // 初始化点击事件
+      document.addEventListener('click', function(e) {
+          // 创建多个文字效果
+          for (var i = 0; i < 5; i++) {
+              setTimeout(function() {
+                  createTextEffect(e.clientX + Math.random() * i * 10 - 30, 
+                                e.clientY + Math.random() * i * 10 - 30);
+              }, i * 50);
+          }
+      });
+      
+      // 移动端支持
+      document.addEventListener('touchstart', function(e) {
+          e.preventDefault();
+          var touch = e.touches[0];
+          for (var i = 0; i < 2; i++) {
+              setTimeout(function() {
+                  createTextEffect(touch.clientX + Math.random() * 30 - 15,
+                                touch.clientY + Math.random() * 30 - 15);
+              }, i * 50);
+          }
+      }, { passive: false });
+  })();
+  </script>
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">shadow&#39;s blog</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class=""></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class=""></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class=""></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class=""></i>About
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 基于hexo搭建博客记录</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <blockquote>
+<p>第一次用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">hexo</a>，在此记录搭建过程中有用的 tips 和踩的坑<br>主题：<a target="_blank" rel="noopener" href="https://github.com/Ares-X/hexo-theme-freemind.bithack">freemind.bithack</a></p>
+</blockquote>
+<br>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>新建文章</p>
+<pre class="line-numbers language-none"><code class="language-none"># layout
+#   post source&#x2F;_posts
+#   page source
+#   draft source&#x2F;_drafts
+$ hexo new [layout] &lt;title&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>将草稿类型的文件移到 source&#x2F;_posts</p>
+<pre class="line-numbers language-none"><code class="language-none">$ hexo publish [layout] &lt;title&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生成静态文件</p>
+<pre class="line-numbers language-none"><code class="language-none">$ hexo generate
+&#x2F;&#x2F; 简写
+$ hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>启动服务器</p>
+<pre class="line-numbers language-none"><code class="language-none">$ hexo server
+$ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>本地调试，支持热更新</p>
+<pre class="line-numbers language-none"><code class="language-none">$ hexo s -g --debug<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>部署网站</p>
+<pre class="line-numbers language-none"><code class="language-none">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<br>
+<br>
+
+<h3 id="hexo-g-部署报错-部署到-github"><a href="#hexo-g-部署报错-部署到-github" class="headerlink" title="hexo g 部署报错(部署到 github)"></a>hexo g 部署报错(部署到 github)</h3><ol>
+<li>使用用户名+密码登录报错<br>2021.8.13 开始对 git 操作不再支持通过账户+密码来验证，必须基于 token 验证</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">开个坑，后期有空补充<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>hexo 配置问题</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none"># repo 应为git仓库的ssh链接
+deploy:
+  type: git
+  repo: git@github.com:github-username&#x2F;github-username.github.io.git
+  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<br>
+<br>
+
+<h3 id="点击导航显示无法访问的问题"><a href="#点击导航显示无法访问的问题" class="headerlink" title="点击导航显示无法访问的问题"></a>点击导航显示无法访问的问题</h3><p>错误情况</p>
+<ul>
+<li>使用命令创建 Tags，会在 source 下生成 tags&#x2F;index.md，完成 layout 等配置后点击导航 Tags，此时跳转路径为 &#x2F;tags，页面显示无法访问，查看该主题的 demo 发现跳转路径为 &#x2F;tags&#x2F;</li>
+<li>手动将地址栏的地址改为 &#x2F;tags&#x2F;，页面正常</li>
+</ul>
+<p>修改尝试</p>
+<ul>
+<li>直接在 source 下创建 tags.md 文件，并添加下面内容</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">---
+title: tags
+date: 2023-08-10 11:16:46
+type: &#39;tag&#39;
+layout: &#39;tags&#39;
+---<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>此时点击导航正常跳转 (原因不明，后期找到原因再补充)</li>
+</ul>
+<p><em>(部署后发现即使没有创建 archives 文件，跳转也不会报错，且路由后加上了’&#x2F;‘，继续跟踪这个问题)</em></p>
+<br>
+<br>
+
+<h3 id="引入图片无法显示"><a href="#引入图片无法显示" class="headerlink" title="引入图片无法显示"></a>引入图片无法显示</h3><ul>
+<li>参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2171899">文章</a></li>
+</ul>
+
+	  <div class="article-footer-copyright">
+
+    本博客采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议(CC BY-NC-SA 4.0) 发布.</a>
+</div>
+
+	</div>
+
+	
+	
+	<div>
+  	<center>
+
+	<div class="pagination">
+
+    
+    
+    <a href="/2026/01/28/hello-world/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+    
+
+    <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
+    
+    <a href="/2023/08/15/browser-compatibility/" type="button" class="btn btn-default ">Next<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	<!--
+<section id="comment">
+    <h2 class="title">Comments</h2>
+
+    
+</section>
+
+-->
+	
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+
+
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2026-01-28 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/config/">config<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/log/">log<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+		
+
+	</div>
+	
+		
+
+</div><!-- row -->
+
+<!--
+ -->
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  
+  &copy; 2026 Ying's Blog
+  
+      powered by <a href="http://hexo.io/" target="_blank">Hexo</a>.Theme <a href="https://github.com/Ares-X/hexo-theme-freemind.bithack" target="_blank">freemind.bithack</a>  
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/nico.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+   </html>
