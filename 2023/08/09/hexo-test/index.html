@@ -13,7 +13,16 @@
 
 
 
-常用命令新建文章
+
+常用命令
+部署问题
+点击导航无法访问
+引入图片无法显示
+
+
+
+
+常用命令 新建文章
 # layout
 #   post source&amp;#x2F;_posts
 #   page source
@@ -21,14 +30,7 @@
 $ hexo new [layout] &amp;lt;title&amp;gt;
 
 将草稿类型的文件移到 source&amp;#x2F;_posts
-$ hexo publish [layout] &amp;lt;title&amp;gt;
-
-生成静态文件
-$ hexo generate
-&amp;#x2F;&amp;#x2F; 简写
-$ hexo g
-
-启动服务器"> 
+$ hexo publish [layout] &amp;lt;title&amp;gt;"> 
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -237,7 +239,16 @@ $ hexo g
 </blockquote>
 <br>
 
-<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><p>新建文章</p>
+<ul>
+<li><a href="#command">常用命令</a></li>
+<li><a href="#deploy">部署问题</a></li>
+<li><a href="#navProblem">点击导航无法访问</a></li>
+<li><a href="#imgProblem">引入图片无法显示</a></li>
+</ul>
+<br>
+<br>
+
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令 "></a>常用命令 <a id="command"></a></h3><p>新建文章</p>
 <pre class="line-numbers language-none"><code class="language-none"># layout
 #   post source&#x2F;_posts
 #   page source
@@ -265,13 +276,11 @@ $ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <br>
 <br>
 
-<h3 id="hexo-g-部署报错-部署到-github"><a href="#hexo-g-部署报错-部署到-github" class="headerlink" title="hexo g 部署报错(部署到 github)"></a>hexo g 部署报错(部署到 github)</h3><ol>
-<li>使用用户名+密码登录报错<br>2021.8.13 开始对 git 操作不再支持通过账户+密码来验证，必须基于 token 验证</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">开个坑，后期有空补充<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="2">
-<li>hexo 配置问题</li>
+<h3 id="hexo-g-部署报错-部署到-github"><a href="#hexo-g-部署报错-部署到-github" class="headerlink" title="hexo g 部署报错(部署到 github) "></a>hexo g 部署报错(部署到 github) <a id="deploy"></a></h3><ol>
+<li><p>使用用户名+密码登录报错<br>2021.8.13 开始对 git 操作不再支持通过账户+密码来验证，必须基于 token 验证</p>
+</li>
+<li><p>hexo 配置问题</p>
+</li>
 </ol>
 <pre class="line-numbers language-none"><code class="language-none"># repo 应为git仓库的ssh链接
 deploy:
@@ -282,7 +291,7 @@ deploy:
 <br>
 <br>
 
-<h3 id="点击导航显示无法访问的问题"><a href="#点击导航显示无法访问的问题" class="headerlink" title="点击导航显示无法访问的问题"></a>点击导航显示无法访问的问题</h3><p>错误情况</p>
+<h3 id="点击导航显示无法访问的问题"><a href="#点击导航显示无法访问的问题" class="headerlink" title="点击导航显示无法访问的问题 "></a>点击导航显示无法访问的问题 <a id="navProblem"></a></h3><p>错误情况</p>
 <ul>
 <li>使用命令创建 Tags，会在 source 下生成 tags&#x2F;index.md，完成 layout 等配置后点击导航 Tags，此时跳转路径为 &#x2F;tags，页面显示无法访问，查看该主题的 demo 发现跳转路径为 &#x2F;tags&#x2F;</li>
 <li>手动将地址栏的地址改为 &#x2F;tags&#x2F;，页面正常</li>
@@ -305,7 +314,7 @@ layout: &#39;tags&#39;
 <br>
 <br>
 
-<h3 id="引入图片无法显示"><a href="#引入图片无法显示" class="headerlink" title="引入图片无法显示"></a>引入图片无法显示</h3><ul>
+<h3 id="引入图片无法显示"><a href="#引入图片无法显示" class="headerlink" title="引入图片无法显示 "></a>引入图片无法显示 <a id="imgProblem"></a></h3><ul>
 <li>参考<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2171899">文章</a></li>
 </ul>
 
@@ -325,13 +334,13 @@ layout: &#39;tags&#39;
 
     
     
-    <a href="/2026/01/28/hello-world/" type="button" class="btn btn-default"><i
+    <a href="/2023/08/11/git-config/" type="button" class="btn btn-default"><i
                 class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2023/08/15/browser-compatibility/" type="button" class="btn btn-default ">Next<i
+    <a href="/2023/08/08/hello-world/" type="button" class="btn btn-default ">Next<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -365,7 +374,7 @@ layout: &#39;tags&#39;
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2026-01-28 
+	2023-08-09 
 	</div>
 	
 

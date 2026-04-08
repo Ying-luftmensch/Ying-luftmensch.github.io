@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="test">测试</p>
+    <script>
+      try {
+        const abortController = new AbortController();
+        const aa = AbortSignal.any([
+          new AbortController().signal,
+          abortController.signal,
+        ]);
+        document.querySelector("#test").textContent = abortController;
+        // document.querySelector("p")[1].textContent = aa;
+      } catch (e) {
+        console.log("e", e);
+        document.querySelector("#test").textContent = e;
+      }
+    </script>
+  </body>
+</html>
